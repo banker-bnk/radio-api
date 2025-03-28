@@ -5,7 +5,7 @@ import {
   Body,
   Patch,
   Param,
-  Delete,
+  Delete
 } from '@nestjs/common';
 import { TopicsService } from './topics.service';
 import { CreateTopicDto } from './dto/create-topic.dto';
@@ -34,7 +34,7 @@ export class TopicsController {
   @Patch(':id')
   update(
     @Param('id') id: string,
-    @Body() updateTopicDto: UpdateTopicDto,
+    @Body() updateTopicDto: UpdateTopicDto
   ): Promise<Topic> {
     return this.topicsService.update(+id, updateTopicDto);
   }

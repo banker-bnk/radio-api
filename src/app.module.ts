@@ -10,7 +10,7 @@ import { AuthzModule } from './authz/authz.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
-      isGlobal: true,
+      isGlobal: true
     }),
     TypeOrmModule.forRoot({
       type: 'postgres',
@@ -20,13 +20,13 @@ import { AuthzModule } from './authz/authz.module';
       password: process.env.DB_PASSWORD,
       database: process.env.DB_DATABASE,
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      synchronize: true, // set to false in production
+      synchronize: true // set to false in production
     }),
     AuthzModule,
     UsersModule,
     TopicsModule,
     ZonesModule,
-    MessagesModule,
-  ],
+    MessagesModule
+  ]
 })
 export class AppModule {}

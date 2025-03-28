@@ -5,7 +5,7 @@ import {
   Body,
   Patch,
   Param,
-  Delete,
+  Delete
 } from '@nestjs/common';
 import { ZonesService } from './zones.service';
 import { CreateZoneDto } from './dto/create-zone.dto';
@@ -34,7 +34,7 @@ export class ZonesController {
   @Patch(':id')
   update(
     @Param('id') id: string,
-    @Body() updateZoneDto: UpdateZoneDto,
+    @Body() updateZoneDto: UpdateZoneDto
   ): Promise<Zone> {
     return this.zonesService.update(+id, updateZoneDto);
   }

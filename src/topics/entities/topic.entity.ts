@@ -5,7 +5,7 @@ import {
   CreateDateColumn,
   ManyToOne,
   OneToMany,
-  JoinColumn,
+  JoinColumn
 } from 'typeorm';
 import { User } from '../../users/entities/user.entity';
 import { Message } from '../../messages/entities/message.entity';

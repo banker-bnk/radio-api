@@ -9,7 +9,7 @@ import { UpdateMessageDto } from './dto/update-message.dto';
 export class MessagesService {
   constructor(
     @InjectRepository(Message)
-    private messagesRepository: Repository<Message>,
+    private messagesRepository: Repository<Message>
   ) {}
 
   create(createMessageDto: CreateMessageDto): Promise<Message> {
@@ -19,14 +19,14 @@ export class MessagesService {
 
   findAll(): Promise<Message[]> {
     return this.messagesRepository.find({
-      relations: ['user', 'zone', 'topic'],
+      relations: ['user', 'zone', 'topic']
     });
   }
 
   async findOne(id: number): Promise<Message> {
     const message = await this.messagesRepository.findOne({
       where: { id },
-      relations: ['user', 'zone', 'topic'],
+      relations: ['user', 'zone', 'topic']
     });
 
     if (!message) {
@@ -37,7 +37,7 @@ export class MessagesService {
 
   async update(
     id: number,
-    updateMessageDto: UpdateMessageDto,
+    updateMessageDto: UpdateMessageDto
   ): Promise<Message> {
     const message = await this.findOne(id);
     this.messagesRepository.merge(message, updateMessageDto);
@@ -54,14 +54,14 @@ export class MessagesService {
   findByTopic(topicId: number): Promise<Message[]> {
     return this.messagesRepository.find({
       where: { topicId },
-      relations: ['user', 'zone', 'topic'],
+      relations: ['user', 'zone', 'topic']
     });
   }
 
   findByZone(zoneId: number): Promise<Message[]> {
     return this.messagesRepository.find({
       where: { zoneId },
-      relations: ['user', 'zone', 'topic'],
+      relations: ['user', 'zone', 'topic']
     });
   }
 }

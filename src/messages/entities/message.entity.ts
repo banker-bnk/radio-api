@@ -4,7 +4,7 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   ManyToOne,
-  JoinColumn,
+  JoinColumn
 } from 'typeorm';
 import { User } from '../../users/entities/user.entity';
 import { Zone } from '../../zones/entities/zone.entity';

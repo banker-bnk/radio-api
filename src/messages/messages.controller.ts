@@ -6,7 +6,7 @@ import {
   Patch,
   Param,
   Delete,
-  Query,
+  Query
 } from '@nestjs/common';
 import { MessagesService } from './messages.service';
 import { CreateMessageDto } from './dto/create-message.dto';
@@ -25,7 +25,7 @@ export class MessagesController {
   @Get()
   findAll(
     @Query('topicId') topicId?: string,
-    @Query('zoneId') zoneId?: string,
+    @Query('zoneId') zoneId?: string
   ): Promise<Message[]> {
     if (topicId) {
       return this.messagesService.findByTopic(+topicId);
@@ -46,7 +46,7 @@ export class MessagesController {
   @Patch(':id')
   update(
     @Param('id') id: string,
-    @Body() updateMessageDto: UpdateMessageDto,
+    @Body() updateMessageDto: UpdateMessageDto
   ): Promise<Message> {
     return this.messagesService.update(+id, updateMessageDto);
   }

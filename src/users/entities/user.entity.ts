@@ -3,7 +3,7 @@ import {
   Column,
   PrimaryGeneratedColumn,
   CreateDateColumn,
-  OneToMany,
+  OneToMany
 } from 'typeorm';
 import { Point } from 'geojson';
 import { Topic } from '../../topics/entities/topic.entity';
@@ -22,7 +22,7 @@ export class User {
     type: 'geometry',
     spatialFeatureType: 'Point',
     srid: 4326,
-    nullable: true,
+    nullable: true
   })
   location: Point;
 

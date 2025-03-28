@@ -5,7 +5,7 @@ import {
   CreateDateColumn,
   ManyToOne,
   OneToMany,
-  JoinColumn,
+  JoinColumn
 } from 'typeorm';
 import { Point } from 'geojson';
 import { User } from '../../users/entities/user.entity';
@@ -22,7 +22,7 @@ export class Zone {
   @Column({
     type: 'geometry',
     spatialFeatureType: 'Point',
-    srid: 4326,
+    srid: 4326
   })
   center: Point;
 

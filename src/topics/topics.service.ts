@@ -9,7 +9,7 @@ import { UpdateTopicDto } from './dto/update-topic.dto';
 export class TopicsService {
   constructor(
     @InjectRepository(Topic)
-    private topicsRepository: Repository<Topic>,
+    private topicsRepository: Repository<Topic>
   ) {}
 
   create(createTopicDto: CreateTopicDto): Promise<Topic> {
@@ -24,7 +24,7 @@ export class TopicsService {
   async findOne(id: number): Promise<Topic> {
     const topic = await this.topicsRepository.findOne({
       where: { id },
-      relations: ['user'],
+      relations: ['user']
     });
 
     if (!topic) {
