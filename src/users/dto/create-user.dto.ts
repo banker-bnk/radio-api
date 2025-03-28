@@ -3,6 +3,10 @@ import { Point } from 'geojson';
 
 export class CreateUserDto {
   @IsString()
+  @IsOptional()
+  userId?: string;
+
+  @IsString()
   username: string;
 
   @IsOptional()

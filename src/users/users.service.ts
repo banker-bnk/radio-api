@@ -29,6 +29,16 @@ export class UsersService {
     return user;
   }
 
+  async findBySub(userId: string): Promise<User> {
+    const user = await this.usersRepository.findOne({
+      where: { userId }
+    });
+    if (!user) {
+      throw new NotFoundException(`User with sub ${userId} not found`);
+    }
+    return user;
+  }
+
   async update(id: number, updateUserDto: UpdateUserDto): Promise<User> {
     const user = await this.findOne(id);
     this.usersRepository.merge(user, updateUserDto);

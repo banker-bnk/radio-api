@@ -15,6 +15,9 @@ export class User {
   @PrimaryGeneratedColumn()
   id: number;
 
+  @Column({ nullable: true })
+  userId: string; // Storing user.sub attribute from Auth0
+
   @Column({ unique: true })
   username: string;
 

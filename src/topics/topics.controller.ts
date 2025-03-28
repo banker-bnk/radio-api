@@ -5,20 +5,24 @@ import {
   Body,
   Patch,
   Param,
-  Delete
+  Delete,
+  UseGuards,
+  Req
 } from '@nestjs/common';
 import { TopicsService } from './topics.service';
 import { CreateTopicDto } from './dto/create-topic.dto';
 import { UpdateTopicDto } from './dto/update-topic.dto';
 import { Topic } from './entities/topic.entity';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('topics')
 export class TopicsController {
   constructor(private readonly topicsService: TopicsService) {}
 
   @Post()
-  create(@Body() createTopicDto: CreateTopicDto): Promise<Topic> {
-    return this.topicsService.create(createTopicDto);
+  @UseGuards(AuthGuard('jwt'))
+  create(@Body() createTopicDto: CreateTopicDto, @Req() req): Promise<Topic> {
+    return this.topicsService.create(createTopicDto, req.user.sub);
   }
 
   @Get()
