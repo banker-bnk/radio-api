@@ -9,7 +9,7 @@ import { UpdateZoneDto } from './dto/update-zone.dto';
 export class ZonesService {
   constructor(
     @InjectRepository(Zone)
-    private zonesRepository: Repository<Zone>,
+    private zonesRepository: Repository<Zone>
   ) {}
 
   create(createZoneDto: CreateZoneDto): Promise<Zone> {
@@ -22,11 +22,11 @@ export class ZonesService {
   }
 
   async findOne(id: number): Promise<Zone> {
-    const zone = await this.zonesRepository.findOne({ 
+    const zone = await this.zonesRepository.findOne({
       where: { id },
-      relations: ['user'],
+      relations: ['user']
     });
-    
+
     if (!zone) {
       throw new NotFoundException(`Zone with ID ${id} not found`);
     }
@@ -45,4 +45,4 @@ export class ZonesService {
       throw new NotFoundException(`Zone with ID ${id} not found`);
     }
   }
-} 
+}

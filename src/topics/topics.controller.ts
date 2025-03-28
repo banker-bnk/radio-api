@@ -1,16 +1,28 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  UseGuards,
+  Req
+} from '@nestjs/common';
 import { TopicsService } from './topics.service';
 import { CreateTopicDto } from './dto/create-topic.dto';
 import { UpdateTopicDto } from './dto/update-topic.dto';
 import { Topic } from './entities/topic.entity';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('topics')
 export class TopicsController {
   constructor(private readonly topicsService: TopicsService) {}
 
   @Post()
-  create(@Body() createTopicDto: CreateTopicDto): Promise<Topic> {
-    return this.topicsService.create(createTopicDto);
+  @UseGuards(AuthGuard('jwt'))
+  create(@Body() createTopicDto: CreateTopicDto, @Req() req): Promise<Topic> {
+    return this.topicsService.create(createTopicDto, req.user.sub);
   }
 
   @Get()
@@ -24,7 +36,10 @@ export class TopicsController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateTopicDto: UpdateTopicDto): Promise<Topic> {
+  update(
+    @Param('id') id: string,
+    @Body() updateTopicDto: UpdateTopicDto
+  ): Promise<Topic> {
     return this.topicsService.update(+id, updateTopicDto);
   }
 
@@ -32,4 +47,4 @@ export class TopicsController {
   remove(@Param('id') id: string): Promise<void> {
     return this.topicsService.remove(+id);
   }
-} 
+}

@@ -9,7 +9,7 @@ import { UpdateUserDto } from './dto/update-user.dto';
 export class UsersService {
   constructor(
     @InjectRepository(User)
-    private usersRepository: Repository<User>,
+    private usersRepository: Repository<User>
   ) {}
 
   create(createUserDto: CreateUserDto): Promise<User> {
@@ -29,6 +29,16 @@ export class UsersService {
     return user;
   }
 
+  async findBySub(userId: string): Promise<User> {
+    const user = await this.usersRepository.findOne({
+      where: { userId }
+    });
+    if (!user) {
+      throw new NotFoundException(`User with sub ${userId} not found`);
+    }
+    return user;
+  }
+
   async update(id: number, updateUserDto: UpdateUserDto): Promise<User> {
     const user = await this.findOne(id);
     this.usersRepository.merge(user, updateUserDto);
@@ -41,4 +51,4 @@ export class UsersService {
       throw new NotFoundException(`User with ID ${id} not found`);
     }
   }
-} 
+}

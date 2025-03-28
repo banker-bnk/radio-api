@@ -1,4 +1,4 @@
-import { IsString, IsOptional, IsNumber } from 'class-validator';
+import { IsString, IsOptional } from 'class-validator';
 
 export class CreateTopicDto {
   @IsString()
@@ -7,7 +7,4 @@ export class CreateTopicDto {
   @IsString()
   @IsOptional()
   description?: string;
-
-  @IsNumber()
-  userId: number;
-} 
+}

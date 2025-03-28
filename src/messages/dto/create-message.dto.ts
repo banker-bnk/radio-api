@@ -12,4 +12,4 @@ export class CreateMessageDto {
 
   @IsNumber()
   topicId: number;
-} 
+}

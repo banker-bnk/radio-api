@@ -1,4 +1,10 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, OneToMany } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  CreateDateColumn,
+  OneToMany
+} from 'typeorm';
 import { Point } from 'geojson';
 import { Topic } from '../../topics/entities/topic.entity';
 import { Zone } from '../../zones/entities/zone.entity';
@@ -9,6 +15,9 @@ export class User {
   @PrimaryGeneratedColumn()
   id: number;
 
+  @Column({ nullable: true })
+  userId: string; // Storing user.sub attribute from Auth0
+
   @Column({ unique: true })
   username: string;
 
@@ -16,7 +25,7 @@ export class User {
     type: 'geometry',
     spatialFeatureType: 'Point',
     srid: 4326,
-    nullable: true,
+    nullable: true
   })
   location: Point;
 
@@ -34,4 +43,4 @@ export class User {
 
   @OneToMany(() => Message, (message) => message.user)
   messages: Message[];
-} 
+}

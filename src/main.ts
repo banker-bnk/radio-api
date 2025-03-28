@@ -9,10 +9,15 @@ async function bootstrap() {
     new ValidationPipe({
       whitelist: true,
       transform: true,
-      forbidNonWhitelisted: true,
-    }),
+      forbidNonWhitelisted: true
+    })
   );
-  
-  await app.listen(parseInt(process.env.PORT as string));
+
+  await app.listen(parseInt(process.env.PORT));
 }
-bootstrap(); 
+
+// Handle bootstrap errors properly
+bootstrap().catch((err) => {
+  console.error('Failed to start application:', err);
+  process.exit(1);
+});
