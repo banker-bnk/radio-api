@@ -12,4 +12,4 @@ export class CreateZoneDto {
 
   @IsNumber()
   userId: number;
-} 
+}

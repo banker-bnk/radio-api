@@ -10,4 +10,4 @@ import { Zone } from './entities/zone.entity';
   providers: [ZonesService],
   exports: [ZonesService],
 })
-export class ZonesModule {} 
+export class ZonesModule {}

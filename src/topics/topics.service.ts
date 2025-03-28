@@ -22,11 +22,11 @@ export class TopicsService {
   }
 
   async findOne(id: number): Promise<Topic> {
-    const topic = await this.topicsRepository.findOne({ 
+    const topic = await this.topicsRepository.findOne({
       where: { id },
       relations: ['user'],
     });
-    
+
     if (!topic) {
       throw new NotFoundException(`Topic with ID ${id} not found`);
     }
@@ -45,4 +45,4 @@ export class TopicsService {
       throw new NotFoundException(`Topic with ID ${id} not found`);
     }
   }
-} 
+}

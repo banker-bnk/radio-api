@@ -1,4 +1,11 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, ManyToOne, JoinColumn } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  CreateDateColumn,
+  ManyToOne,
+  JoinColumn,
+} from 'typeorm';
 import { User } from '../../users/entities/user.entity';
 import { Zone } from '../../zones/entities/zone.entity';
 import { Topic } from '../../topics/entities/topic.entity';
@@ -34,4 +41,4 @@ export class Message {
 
   @CreateDateColumn()
   createdAt: Date;
-} 
+}

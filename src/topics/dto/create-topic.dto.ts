@@ -10,4 +10,4 @@ export class CreateTopicDto {
 
   @IsNumber()
   userId: number;
-} 
+}

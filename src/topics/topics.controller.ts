@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { TopicsService } from './topics.service';
 import { CreateTopicDto } from './dto/create-topic.dto';
 import { UpdateTopicDto } from './dto/update-topic.dto';
@@ -24,7 +32,10 @@ export class TopicsController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateTopicDto: UpdateTopicDto): Promise<Topic> {
+  update(
+    @Param('id') id: string,
+    @Body() updateTopicDto: UpdateTopicDto,
+  ): Promise<Topic> {
     return this.topicsService.update(+id, updateTopicDto);
   }
 
@@ -32,4 +43,4 @@ export class TopicsController {
   remove(@Param('id') id: string): Promise<void> {
     return this.topicsService.remove(+id);
   }
-} 
+}

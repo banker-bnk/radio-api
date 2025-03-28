@@ -1,4 +1,12 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, ManyToOne, OneToMany, JoinColumn } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  CreateDateColumn,
+  ManyToOne,
+  OneToMany,
+  JoinColumn,
+} from 'typeorm';
 import { User } from '../../users/entities/user.entity';
 import { Message } from '../../messages/entities/message.entity';
 
@@ -25,4 +33,4 @@ export class Topic {
 
   @OneToMany(() => Message, (message) => message.topic)
   messages: Message[];
-} 
+}

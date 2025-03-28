@@ -1,4 +1,12 @@
-import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, ManyToOne, OneToMany, JoinColumn } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  CreateDateColumn,
+  ManyToOne,
+  OneToMany,
+  JoinColumn,
+} from 'typeorm';
 import { Point } from 'geojson';
 import { User } from '../../users/entities/user.entity';
 import { Message } from '../../messages/entities/message.entity';
@@ -33,4 +41,4 @@ export class Zone {
 
   @OneToMany(() => Message, (message) => message.zone)
   messages: Message[];
-} 
+}
